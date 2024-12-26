@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -71,10 +72,13 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	actionsCount := result["total_count"].(float64)                  // GitHub API vrací číslo jako float64
+	actionsCountStr := strconv.FormatFloat(actionsCount, 'f', 0, 64) // Převod na string
+
 	// Vytvoření odpovědi ve formátu JSON
 	response := map[string]interface{}{
 		"schemaVersion": 1,
-		"message":       result["total_count"],
+		"message":       actionsCountStr,
 	}
 
 	// Nastavení správných hlaviček pro JSON odpověď
