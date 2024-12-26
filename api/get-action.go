@@ -83,5 +83,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	// Tento handler bude obsluhovat všechny požadavky na /api/get-action
 	http.HandleFunc("/api/get-action", Handler)
+	http.HandleFunc("/", Handler)
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }
