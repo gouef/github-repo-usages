@@ -80,6 +80,7 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 		"schemaVersion": 1,
 		"message":       actionsCountStr,
 		"label":         "",
+		"namedLogo":     "githubactions",
 	}
 
 	// Nastavení správných hlaviček pro JSON odpověď
