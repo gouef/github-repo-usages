@@ -1,4 +1,4 @@
-// api/get-action.go
+// api/getAction.go
 package handler
 
 import (
@@ -10,7 +10,7 @@ import (
 	"os"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
+func GetAction(w http.ResponseWriter, r *http.Request) {
 	// Získání parametrů z URL
 	owner := r.URL.Query().Get("owner")
 	repo := r.URL.Query().Get("repo")
@@ -82,7 +82,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// Tento handler bude obsluhovat všechny požadavky na /api/get-action
-	http.HandleFunc("/api/get-action", Handler)
-	http.HandleFunc("/", Handler)
+	http.HandleFunc("/api/get-action", GetAction)
+	http.HandleFunc("/", GetAction)
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }
