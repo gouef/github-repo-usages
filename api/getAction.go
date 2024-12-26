@@ -79,8 +79,8 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 	response := map[string]interface{}{
 		"schemaVersion": 1,
 		"message":       actionsCountStr,
-		"label":         "uses",
-		"namedLogo":     "githubactions",
+		"label":         "usages",
+		"color":         "blue",
 	}
 
 	// Nastavení správných hlaviček pro JSON odpověď
