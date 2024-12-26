@@ -73,9 +73,6 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 
 	// Vytvoření odpovědi ve formátu JSON
 	response := map[string]interface{}{
-		"owner":         owner,
-		"repo":          repo,
-		"actions_count": result["total_count"],
 		"schemaVersion": 1,
 		"label":         "uses",
 		"message":       result["total_count"],
