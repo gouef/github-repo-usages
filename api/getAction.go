@@ -8,16 +8,29 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func GetAction(w http.ResponseWriter, r *http.Request) {
 	// Získání parametrů z URL
 	owner := r.URL.Query().Get("owner")
 	repo := r.URL.Query().Get("repo")
+	repository := r.URL.Query().Get("repository")
 
 	if owner == "" || repo == "" {
-		http.Error(w, "Missing 'owner' or 'repo' query parameter", http.StatusBadRequest)
-		return
+		if repository == "" {
+			http.Error(w, "Missing 'owner' or 'repo' query parameter", http.StatusBadRequest)
+			return
+		} else {
+			// Rozdělení 'repository' na owner a repo
+			parts := strings.Split(repository, "/")
+			if len(parts) != 2 {
+				http.Error(w, "Invalid 'repository' format. Expected 'owner/repo'", http.StatusBadRequest)
+				return
+			}
+			owner = parts[0]
+			repo = parts[1]
+		}
 	}
 
 	// URL pro GitHub API (získání počtu běhů akcí pro daný repozitář)
