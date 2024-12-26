@@ -1,5 +1,5 @@
 // api/get-action.go
-package main
+package handler
 
 import (
 	"encoding/json"
