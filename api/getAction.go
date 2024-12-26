@@ -79,7 +79,7 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 	response := map[string]interface{}{
 		"schemaVersion": 1,
 		"message":       actionsCountStr,
-		"label":         "",
+		"label":         "uses",
 		"namedLogo":     "githubactions",
 	}
 
