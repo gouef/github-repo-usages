@@ -74,10 +74,7 @@ func GetAction(w http.ResponseWriter, r *http.Request) {
 	// Vytvoření odpovědi ve formátu JSON
 	response := map[string]interface{}{
 		"schemaVersion": 1,
-		"label":         "uses",
 		"message":       result["total_count"],
-		"color":         "blue",
-		"logo":          "githubactions",
 	}
 
 	// Nastavení správných hlaviček pro JSON odpověď
